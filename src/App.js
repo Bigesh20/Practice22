@@ -26,7 +26,7 @@ const categories = [
   },
   {
     id: 4,
-    title: 'Mens',
+    title: 'Mens apparels',
     imgUrl: image4
   },
   {
