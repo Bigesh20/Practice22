@@ -5,10 +5,17 @@ import { useContext } from 'react';
 
 
 
-const CheckoutItems =({cartItem}) => {
+const CheckoutItems = ({cartItem}) => {
+
+   
+ 
     const {imageUrl, quantity, price, name} = cartItem;
 
-    const {addCartItem, removeCartItem} = useContext(CartContext)
+    const {addCartItem, removeCartItem , clearCartItem} = useContext(CartContext);
+    const RemoveButton = () => {
+     clearCartItem(cartItem);
+    }
+   
     const Increment = () => {
         addCartItem(cartItem);
         }
@@ -23,13 +30,13 @@ const CheckoutItems =({cartItem}) => {
         <img src={imageUrl} alt={`${name}`}  />
         </div>
         <span className='name'>{name}</span>
-        <span className='arrow' onClick={Decrement}>qwerty</span>
-        <span className='quantity'>{quantity}</span>
-        <span className='arrow' onClick={Increment}>qwerty</span>
+        <span className='quantity'>
+        <div className='arrow' onClick={Decrement}>&lt;</div>
+        {quantity}
+        <div className='arrow' onClick={Increment}>&gt;</div>
+        </span>
         <span className='price'>{price}</span>
-        <div className='remove-button'>U+2715</div>
-
-        
+        <div className='remove-button' onClick={RemoveButton}>&#10005;</div>
         </div>
     )
 
